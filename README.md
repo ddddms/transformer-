@@ -143,7 +143,7 @@ def forward(self, x, memory, src_mask, tgt_mask):
 
 ### 2.2 mask
 ​	注意掩码下面显示了每个tgt单词（行）被允许查看的位置（列）。在训练过程中，单词会被屏蔽，以便关注将来的单词。
-![Figure_1](picture\Figure_1.png)
+![Figure_1](picture/Figure_1.png)
 ​	transformer修改了解码器堆栈中的自注意子层，以防止位置关注后续位置。这种掩蔽，再加上输出嵌入偏移一个位置的事实，确保了位置$i$的预测只依赖于小于$i$位置的已知输出。
 ​    
 
