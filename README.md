@@ -196,12 +196,12 @@ def attention(query, key, value, mask=None, dropout=None):
 ### 3.1 multi-head attention
 
 ​	multi-head attention允许模型在不同位置共同注意来自不同表示子空间的信息。对于单一注意力头，平均会抑制这一点。
-$$
-\begin{array}{l}
-\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \ldots, \text{head}_h) W^O \\
-\text{where head}_i = \text{Attention}(Q W_i^Q, K W_i^K, V W_i^V)
-\end{array}
-$$
+\[
+\begin{aligned}
+    \text{MultiHead}(Q, K, V) &= \text{Concat}(\text{head}_1, \ldots, \text{head}_h) W^O \\
+    \text{where head}_i &= \text{Attention}(Q W_i^Q, K W_i^K, V W_i^V)
+\end{aligned}
+\]
 ​	其中，映射矩阵$$W_i^Q \in \mathbb{R}^{d_{\text{model}} \times d_k}, \quad$$,$$W_i^K \in \mathbb{R}^{d_{\text{model}} \times d_k}, \quad$$$$W_i^V \in \mathbb{R}^{d_{\text{model}} \times d_v}, \quad \text{and} \quad$$$$W^O \in \mathbb{R}^{h d_v \times d_{\text{model}}}$$ （不同的head之间映射矩阵并不相同）。在这项工作中，transformer使用了$h=8$个并行注意力层（即8个head）。对于每个注意力层，使用 。由于每层$$d_k = d_v = \frac{d_{\text{model}}}{h} = 64.$$的维度降低，总的计算成本与具有完整维度的单头注意力相似。
 
 ![img_2.png](picture/img_2.png)
