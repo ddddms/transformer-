@@ -159,7 +159,7 @@ return torch.from_numpy(sub_mask) == 0
 
 ## 3 attention
 ​	attention函数可以描述为将query和一组key-value对映射到输出，其中query、key、value和输出都是向量。输出是作为值的加权和计算的。
-![img.png](picture\img.png)
+![img.png](picture/img.png)
 
 计算公式如下：
 
@@ -204,7 +204,7 @@ $$
 $$
 ​	其中，映射矩阵$$W_i^Q \in \mathbb{R}^{d_{\text{model}} \times d_k}, \quad$$,$$W_i^K \in \mathbb{R}^{d_{\text{model}} \times d_k}, \quad$$$$W_i^V \in \mathbb{R}^{d_{\text{model}} \times d_v}, \quad \text{and} \quad$$$$W^O \in \mathbb{R}^{h d_v \times d_{\text{model}}}$$ （不同的head之间映射矩阵并不相同）。在这项工作中，transformer使用了$h=8$个并行注意力层（即8个head）。对于每个注意力层，使用 。由于每层$$d_k = d_v = \frac{d_{\text{model}}}{h} = 64.$$的维度降低，总的计算成本与具有完整维度的单头注意力相似。
 
-![img_2.png](picture\img_2.png)
+![img_2.png](picture/img_2.png)
 
 代码实现如下：
 
@@ -396,7 +396,7 @@ class Generator(nn.Module):
 ### 7.3 full_model
 ​	这里定义了一个函数，它接受超参数并产生一个完整的模型。
 
-![transformer.png](picture\transformer.png)
+![transformer.png](picture/transformer.png)
 
 ​	
 
